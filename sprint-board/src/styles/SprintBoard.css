@@ -1,0 +1,112 @@
+.sprint-board {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.column {
+    flex: 1;
+    margin-right: 10px;
+    background-color: #f4f4f4;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.column:last-child {
+    margin-right: 0;
+}
+
+.column h3 {
+    margin-top: 0;
+}
+
+.task-tile {
+    background-color: #fff;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.task-tile h4 {
+    margin: 0 0 10px 0;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    width: 300px;
+    position: relative;
+}
+
+.modal-content form {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-content label {
+    margin-bottom: 10px;
+}
+
+.modal-content input,
+.modal-content select {
+    padding: 5px;
+    margin-top: 5px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+}
+
+.modal-content button {
+    padding: 5px 10px;
+    margin-top: 10px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.close-modal {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* src/components/SprintBoard.css */
+.sprint-board {
+    display: flex;
+    justify-content: space-between;
+}
+
+.column {
+    width: 18%;
+    background-color: #f4f4f4;
+    padding: 10px;
+    border-radius: 4px;
+    min-height: 400px;
+}
+
+.task-tile {
+    background-color: white;
+    margin-bottom: 8px;
+    padding: 10px;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
