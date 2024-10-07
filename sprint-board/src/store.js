@@ -1,13 +1,23 @@
 import { createStore } from 'redux';
 import { v4 as uuidv4 } from 'uuid';
-import { UPDATE_TASK_TITLE } from './actions';
+import { UPDATE_TASK_TITLE, DELETE_TASK } from './actions';
 
-// Initial state
+const loadState = () => {
+    try {
+        const serializedState = localStorage.getItem('tasks');
+        if (serializedState === null) {
+            return undefined;
+        }
+        return { tasks: JSON.parse(serializedState) };
+    } catch (err) {
+        return undefined;
+    }
+};
+
 const initialState = {
     tasks: [],
 };
 
-// Reducer
 function sprintReducer(state = initialState, action) {
     switch (action.type) {
         case 'ADD_TASK':
@@ -23,20 +33,28 @@ function sprintReducer(state = initialState, action) {
                 ...state,
                 tasks: updatedTasks,
             };
-            case UPDATE_TASK_TITLE:
-                // Updates the title of a task based on its index
-                const tasksWithUpdatedTitle = [...state.tasks];
-                tasksWithUpdatedTitle[action.payload.index].title = action.payload.newTitle;
-                return {
-                  ...state,
-                  tasks: tasksWithUpdatedTitle,
-                };
+        case UPDATE_TASK_TITLE:
+            const tasksWithUpdatedTitle = [...state.tasks];
+            tasksWithUpdatedTitle[action.payload.index].title = action.payload.newTitle;
+            return {
+                ...state,
+                tasks: tasksWithUpdatedTitle,
+            };
+        case DELETE_TASK:
+            return {
+                ...state,
+                tasks: state.tasks.filter(task => task.id !== action.payload),
+            };
         default:
             return state;
     }
 }
 
-// Create store
-const store = createStore(sprintReducer);
+const store = createStore(sprintReducer, loadState());
+
+store.subscribe(() => {
+    const state = store.getState();
+    localStorage.setItem('tasks', JSON.stringify(state.tasks));
+});
 
 export default store;

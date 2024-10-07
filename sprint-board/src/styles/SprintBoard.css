@@ -89,7 +89,6 @@
     cursor: pointer;
 }
 
-/* src/components/SprintBoard.css */
 .sprint-board {
     display: flex;
     justify-content: space-between;
@@ -109,4 +108,24 @@
     padding: 10px;
     border-radius: 4px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+.delete-task {
+    background: transparent;
+    border: none;
+    color: red;
+    font-size: 20px; 
+    cursor: pointer; 
+    float: right; 
+}
+
+.delete-task:hover {
+    color: darkred;
+}
+
+.tile-task{
+    display: flex;
+}
+
+.task-title{
+    flex: 1;
 }
